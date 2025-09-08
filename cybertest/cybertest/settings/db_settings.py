@@ -9,8 +9,10 @@ DATABASES = {
         "NAME": env("DB_NAME", cast=str, default="cybertest"),
         "USER": env("DB_USER", cast=str, default="postgres"),
         "PASSWORD": env("DB_PASSWORD", cast=str,default="12345"),
-        # "HOST": "db",
-        "HOST": "localhost",
+        #docker
+        "HOST": "db",
+        #local
+        #"HOST": "localhost",
         "PORT": 5432,
     }
 }
