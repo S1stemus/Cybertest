@@ -1,0 +1,23 @@
+services:
+  db:
+   image: postgres:15
+   container_name: db
+   environment:
+     POSTGRES_DB: ${DB_NAME}
+     POSTGRES_USER: ${DB_USER}
+     POSTGRES_PASSWORD: ${DB_PASSWORD}
+   ports:
+     - "5434:5432"
+   env_file:
+     - .env
+
+  web:
+    build: .
+    container_name: django-docker
+    command: sh -c "python cybertest/manage.py migrate && python cybertest/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

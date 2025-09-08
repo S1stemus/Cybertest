@@ -1,0 +1,5 @@
+test,question,true_answer,false_answer,choices_true,choices_false
+'test1','2+2','4','5',6,3
+'test2','3*4','12','15',13,2
+'test3','задание выполнено?','да','нет',0,0
+

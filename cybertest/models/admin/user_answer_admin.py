@@ -3,6 +3,6 @@ from models.models import UserAnswer
 
 @admin.register(UserAnswer)
 class UserAnswerAdmin(admin.ModelAdmin):
-    fields = ('answer', 'user', 'question', 'is_correct')
-    list_display = ('id', 'answer', 'user', 'question', 'is_correct')
+    fields = ('answer', 'user', 'question', 'is_correct_answer')
+    list_display = ('id', 'answer', 'user', 'question', 'is_correct_answer')
     list_display_links = ('id', 'answer', 'user')

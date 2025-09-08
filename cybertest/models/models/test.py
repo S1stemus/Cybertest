@@ -1,9 +1,15 @@
-from turtle import update
-from venv import create
 from django.db import models
 
 class Test(models.Model):
-    name = models.CharField(
+    user = models.ManyToManyField(
+        "User",
+        related_name="tests",
+        related_query_name="test",
+        null=False,
+        blank=False,
+        verbose_name="Пользователи",
+        )
+    name = models.CharField( 
         max_length = 127,
         verbose_name="Название",
         null=False,

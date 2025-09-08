@@ -3,39 +3,52 @@ from django.db import models
 
 
 class UserAnswer(models.Model):
+    is_correct_choices = [(0, "Нет"), (1, "Да")]
     user = models.ForeignKey(
         "User",
         on_delete=models.CASCADE,
         null=False,
         blank=False,
         verbose_name="Пользователь",
-        related_name="users",
-        related_query_name="user",
+        related_name="user_answers",
+        related_query_name="user_answer",
     )
     answer = models.ForeignKey(
         "Answer",
         on_delete=models.CASCADE,
         null=False,
         blank=False,
-        verbose_name="Пользователь",
-        related_name="answers",
-        related_query_name="answer",
+        verbose_name="Вариант ответа",
+        related_name="user_answers",
+        related_query_name="user_answer",
     )
     question = models.ForeignKey(
         "Question",
         on_delete=models.CASCADE,
         null=False,
         blank=False,
-        verbose_name="Вопрос",
-        related_name="questions_",
-        related_query_name="question",
-        default=None
+        verbose_name = "Вопрос",
+        related_name ="user_answers",
+        related_query_name = "user_answer",
+        default = None
     )
-    is_correct = models.BooleanField(
-        default = False,
+    test = models.ForeignKey(
+        "Test",
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+        verbose_name="Тест",
+        related_name="user_answers",
+        related_query_name="user_answer",
+        default = 1
+    )
+    is_correct_answer = models.IntegerField(
+        choices = is_correct_choices,
+        default = 0,
         blank = False,
-        null = False,
-    )
+        null = False
+    ) 
+
 
     class Meta:
         app_label = "models"

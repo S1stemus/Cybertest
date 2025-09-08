@@ -7,15 +7,30 @@ class Question(models.Model):
         null = False,
         blank = False
     )
+    user = models.ForeignKey(
+        "User",
+        on_delete = models.CASCADE,
+        null = False,
+        blank = False,
+        verbose_name = "Пользователь",
+        related_name = "questions",
+        related_query_name = "question",
+        default = None
+    )
     test = models.ForeignKey(
         "Test",
         on_delete = models.CASCADE,
         null = False,
         blank=False,
         verbose_name="Тест",
-        related_name="tests",
-        related_query_name="test",
+        related_name="questions",
+        related_query_name="question",
     )
+    class Meta :
+        app_label = "models"
+        db_table = "question"
+        verbose_name_plural = "Вопросы"
+        verbose_name = "Вопрос"
     
     
 
